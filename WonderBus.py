@@ -35,7 +35,7 @@ event = st.sidebar.multiselect(
 
 if "All" in event:
     event = df["Event"].unique().tolist()
-
+'''
 start_date = datetime(2020, 1, 1)
 end_date = start_date + timedelta(weeks = 1)
 
@@ -45,7 +45,7 @@ sell_date = st.sidebar.slider(
     max_value = end_date,
     value = (start_date, end_date),
     step = timedelta(days = 1))
-
+'''
 df_selection = df.query("Customer == @customer & Venue == @venue & Event == @event")
 
 
