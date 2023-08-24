@@ -14,8 +14,12 @@
 
 import streamlit as st
 
-st.set_page_config(page_title="Profit/Loss Reports")
+st.set_page_config(page_title="Upload a File")
 
-st.write("# Welcome to TicketUtils! 👋")
+st.write("# Welcome! 👋")
 
-st.sidebar.success("Select your company.")
+st.markdown("##")
+
+st.file_uploader("Drag and drop your file here", type="xlsx")
+
+st.sidebar.success("Select Your Event")
