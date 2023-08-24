@@ -22,4 +22,4 @@ st.markdown("##")
 
 st.file_uploader("Drag and drop your file here", type="xlsx")
 
-st.sidebar.success("Select Your Event")
+#st.sidebar.success("Select Your Event")
