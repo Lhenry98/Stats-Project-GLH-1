@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 
 st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
 
-df = pd.read_excel(io = "WonderBus Festival.xlsx")
+df = pd.read_excel(io = r"C:\Users\LEEMU\Anaconda\envs\GianniProject\App\WonderBus Festival.xlsx")
 
 # ---- SIDEBAR ----
 #event
