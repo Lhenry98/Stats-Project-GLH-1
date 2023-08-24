@@ -49,7 +49,7 @@ st.markdown("##")
 net_sales = round(df_selection["Profit Loss"].sum(), 2)
 average_roi = round(df_selection["ROI(%)"].mean(), 2)
 tot_quant_sold = df_selection["Sold Qty"].sum()
-quant_sold_by_date = df_selection.groupby(by = ["Sale Date"])[["Sold Qty"]].sort_values(by = "Sold Qty")
+quant_sold_by_date = df_selection.groupby(by = ["Sale Date"]).sum()[["Sold Qty"]].sort_values(by = "Sold Qty")
 
 #first two columns
 left_column, right_column = st.columns(2)
