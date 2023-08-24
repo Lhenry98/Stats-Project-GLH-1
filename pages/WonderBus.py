@@ -1,10 +1,11 @@
 import pandas as pd
 import streamlit as st
 import plotly.express as px
+from Hello import uploaded_file
 
 st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
 
-df = pd.read_excel(io = "WonderBus Festival.xlsx")
+df = pd.read_excel(io = uploaded_file)
 
 # ---- SIDEBAR ----
 #event
