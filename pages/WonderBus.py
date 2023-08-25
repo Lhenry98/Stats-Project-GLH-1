@@ -39,8 +39,6 @@ if "All" in event:
 
 df_selection = df.query("Customer == @customer & Venue == @venue & Event == @event")
 
-uploaded_file = st.file_uploader("Current file",type="xlsx")
-
 st.dataframe(df_selection)
 
 
