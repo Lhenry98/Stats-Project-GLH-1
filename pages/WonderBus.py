@@ -60,3 +60,8 @@ with right_column:
     st.subheader(f"{tot_quant_sold:,}")
 
 st.markdown("---")
+
+while(True):
+    df = pd.read_excel(io = uploaded_file)
+    time.sleep(5)
+
