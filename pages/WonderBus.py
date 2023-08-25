@@ -47,15 +47,15 @@ st.title(":bar_chart: Sales Dashboard")
 st.markdown("##")
 
 # top kpi's
-net_sales = round(df_selection["Profit Loss"].sum(), 2)
+tot_sales = round(df_selection["Total Sell Price"].sum(), 2)
 average_roi = round(df_selection["ROI(%)"].mean(), 2)
 tot_quant_sold = df_selection["Sold Qty"].sum()
 
 #first two columns
 left_column, right_column = st.columns(2)
 with left_column:
-    st.subheader("Net Sales:")
-    st.subheader(f"US $ {net_sales:,}")
+    st.subheader("Total Sales:")
+    st.subheader(f"US $ {tot_sales:,}")
 with right_column:
     st.subheader("Quantity Sold:")
     st.subheader(f"{tot_quant_sold:,}")
