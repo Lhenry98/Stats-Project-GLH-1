@@ -20,6 +20,4 @@ st.write("# Welcome! 👋")
 
 st.markdown("##")
 
-uploaded_file = st.file_uploader("Current file",type="xlsx")
-
 #st.sidebar.success("Select Your Event")
