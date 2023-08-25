@@ -20,6 +20,6 @@ st.write("# Welcome! 👋")
 
 st.markdown("##")
 
-uploaded_file = st.file_uploader("Drag and drop your file here", type="xlsx")
+uploaded_file = st.file_uploader(type="xlsx")
 
 #st.sidebar.success("Select Your Event")
