@@ -2,9 +2,10 @@ import time
 import pandas as pd
 import streamlit as st
 import plotly.express as px
-from Hello import uploaded_file
 
 st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
+
+uploaded_file = st.file_uploader("Current file",type="xlsx")
 
 df = pd.read_excel(io = uploaded_file)
 
