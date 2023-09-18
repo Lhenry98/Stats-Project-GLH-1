@@ -5,9 +5,9 @@ import plotly.express as px
 
 st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
 
-uploaded_file = st.file_uploader("Current file",type="xlsx")
-
-df = pd.read_excel(io = uploaded_file)
+#uploaded_file = st.file_uploader("Current file",type="xlsx")
+#df = pd.read_excel(io = uploaded_file)
+df = pd.read_excel(io = "WonderBus Festival.xlsx")
 
 # ---- SIDEBAR ----
 #event
