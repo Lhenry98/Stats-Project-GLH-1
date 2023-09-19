@@ -4,7 +4,7 @@ import plotly.express as px
 
 st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
 
-df = pd.read_excel(io = "WonderBus Festival.xlsx")
+df = pd.read_excel(io = "WonderBus Festival.csv")
 
 # ---- SIDEBAR ----
 #event
