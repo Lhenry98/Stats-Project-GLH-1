@@ -2,7 +2,7 @@ import time
 import settings
 import shutil
 import os.path
-import time
+import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -12,6 +12,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 
 while(True):
+   
     for i in settings.CompList:
         CompName = i
     
@@ -22,6 +23,7 @@ while(True):
         options.headless = False
         options.add_argument("--no-sandbox")
         driver = webdriver.Chrome(options = options)
+      
         driver.get("https://app.ticketutils.com/")
         delay = 180 #seconds
         
@@ -30,8 +32,8 @@ while(True):
         SitePassword = driver.find_element_by_name('Password')
         
         #submit login info
-        SiteUsername.send_keys("ghentrich@gmail.com")
-        SitePassword.send_keys("Elvi$420")
+        SiteUsername.send_keys(settings.TU_Username)
+        SitePassword.send_keys(settings.TU_Password)
         #click login button
         driver.find_element_by_xpath("/html/body/div[2]/div/div/form/div/div[3]/button").click()
         
@@ -95,7 +97,13 @@ while(True):
             shutil.move("C:/Users/LEEMU/Downloads/Profit_Loss.xlsx", "C:/Users/LEEMU/Anaconda/envs/GianniProject/App/" + CompName + ".xlsx")
         else:
             print("File couldn't be found!")
+        
+        #convert file to csv
+        read_file = pd.read_excel(CompName + ".xlsx")
+        read_file.to_csv(CompName + ".csv", index = None, header = True)
+        #SLLayer = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, "/html/body/div/div[1]/div/div/iframe")))
+        #driver.switch_to.frame(SLLayer)
         #quit webdriver
         driver.close()
         #wait 5 minutes then run again
-        time.sleep()
+        time.sleep(300)
