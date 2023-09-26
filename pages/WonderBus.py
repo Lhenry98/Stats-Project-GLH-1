@@ -7,7 +7,7 @@ st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
 
 #uploaded_file = st.file_uploader("Current file",type="xlsx")
 #df = pd.read_excel(io = uploaded_file)
-df = pd.read_csv("WonderBus Festival.csv")
+df = pd.read_excel(io = "WonderBus Festival.xlsx")
 
 # ---- SIDEBAR ----
 #event
@@ -39,10 +39,16 @@ if "All" in event:
 
 df_selection = df.query("Customer == @customer & Venue == @venue & Event == @event")
 
-st.dataframe(df_selection)
-
 
 # ---- MAIN PAGE ----
+st.dataframe(df_selection,
+             column_config = {
+                 "Profit Loss": None,
+                 "ROI(%)": None,
+                 "Margin": None,
+                 "Shipping Cost": None,
+                 "Tax": None})
+
 st.title(":bar_chart: Sales Dashboard")
 st.markdown("##")
 
@@ -61,4 +67,3 @@ with right_column:
     st.subheader(f"{tot_quant_sold:,}")
 
 st.markdown("---")
-
