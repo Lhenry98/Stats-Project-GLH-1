@@ -81,6 +81,11 @@ fig_ticket_sales = px.bar(quant_sold_by_date,
                           color_discrete_sequence=['#ec7c34'] * len(quant_sold_by_date),
                           template = "plotly_white")
 
+now = dt.now()
+now_string = now.strftime("%d/%m/%Y %H:%M:%S")
+week = now - dt.timedelta(days = 7)
+week_string = week.strftime("%d/%m/%Y %H:%M:%S")
+fig_ticket_sales.update_xaxes(range=[week_string, now_string])
 st.plotly_chart(fig_ticket_sales)
 
 st.markdown("---")
