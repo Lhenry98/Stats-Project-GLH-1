@@ -13,7 +13,6 @@ st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
 #convert first columns to strings
 df = pd.read_csv(event_name + '.csv')
 df = df.drop(["Invoice #", "Ex. Order No", "Purchase Price/tix", "Total Purchase Price", "Profit Loss" ,"ROI(%)" ,"Margin" ,"Shipping Cost" ,"Tax"], axis = 1)
-df.set_index("Sale Date")
 
 # ---- SIDEBAR ----
 #event
@@ -43,14 +42,6 @@ if "All" in event:
 
 # ---- MAIN PAGE ----
 df_selection = df.query("Customer == @customer & Venue == @venue & Event == @event")
-
-#download button
-@st.cache
-def convert_df(df):
-    # IMPORTANT: Cache the conversion to prevent computation on every rerun
-    return df.to_csv().encode('utf-8')
-
-csv = convert_df(df_selection)
 
 st.title(event_name)
 
