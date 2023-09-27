@@ -13,6 +13,7 @@ st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
 #convert first columns to strings
 df = pd.read_csv(event_name + '.csv')
 df = df.drop(["Invoice #", "Ex. Order No", "Purchase Price/tix", "Total Purchase Price", "Profit Loss" ,"ROI(%)" ,"Margin" ,"Shipping Cost" ,"Tax"], axis = 1)
+df.set_index("Sale Date")
 
 # ---- SIDEBAR ----
 #event
