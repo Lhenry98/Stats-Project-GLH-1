@@ -81,7 +81,6 @@ fig_ticket_sales = px.bar(quant_sold_by_date,
                           template = "plotly_white")
 
 st.plotly_chart(fig_ticket_sales)
-st.slider(min_value = df_selection["Sale Date"].min(), max_value = df_selection["Sale Date"].max())
 
 st.markdown("---")
 
