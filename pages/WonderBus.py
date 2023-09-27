@@ -4,11 +4,8 @@ import plotly.express as px
 
 st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
 
-#uploaded_file = st.file_uploader("Current file",type="xlsx")
-#df = pd.read_excel(io = uploaded_file)
+#convert first columns to strings
 df = pd.read_csv('WonderBus Festival.csv', dtype={'Invoice #':str, 'Ex. Order No':str})
-# Convert the "Year" column to a numeric 
-df['Invoice #'] = pd.to_numeric(df['Invoice #'])
 
 # ---- SIDEBAR ----
 #event
