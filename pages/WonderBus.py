@@ -6,7 +6,7 @@ st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
 
 #uploaded_file = st.file_uploader("Current file",type="xlsx")
 #df = pd.read_excel(io = uploaded_file)
-df = pd.read_csv("WonderBus Festival.csv")
+df = pd.read_csv("WonderBus Festival.csv", dtype={"Invoice#":str, "Ex. Order No":str})
 
 # ---- SIDEBAR ----
 #event
@@ -39,7 +39,6 @@ df_selection = df.query("Customer == @customer & Venue == @venue & Event == @eve
 
 st.dataframe(df_selection,
              column_config = {
-                 "Invoice#": st.column_config.NumberColumn(format="%d"), 
                  "Purchase Price/tix": st.column_config.NumberColumn(format="$%d"), 
                  "Sell Price/tix": st.column_config.NumberColumn(format="$%d"), 
                  "Total Purchase Price": st.column_config.NumberColumn(format="$%d"), 
