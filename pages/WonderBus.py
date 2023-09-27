@@ -40,6 +40,11 @@ if "All" in event:
 
 df_selection = df.query("Customer == @customer & Venue == @venue & Event == @event")
 quant_sold_by_date = df_selection.groupby(by = ["Sale Date"]).sum()[["Sold Qty"]].sort_values(by = "Sold Qty")
+df["Event Date"] = [
+        datetime.datetime.strptime(
+            str(target_date).split(" ")[0], '%Y-%m-%d').date()
+        for target_date in df["Event Date"]
+    ]
 
 
 # ---- MAIN PAGE ----
