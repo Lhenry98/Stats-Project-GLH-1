@@ -66,6 +66,17 @@ with right_column:
     st.subheader("Quantity Sold:")
     st.subheader(f"{tot_quant_sold:,}")
 
+st.markdown("##")
+
+#bar chart
+fig_ticket_sales = px.bar(quant_sold_by_date,
+                          y = "Sold Qty", 
+                          orientation = "v",
+                          title = "<b>Quantity Sold by Date<b>",
+                          color_discrete_sequence=['#ec7c34'] * len(quant_sold_by_date),
+                          template = "plotly_white")
+
+st.plotly_chart(fig_ticket_sales)
+
 st.markdown("---")
 
-st.bar_chart(df_selection)
