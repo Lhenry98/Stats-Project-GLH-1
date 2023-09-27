@@ -79,10 +79,6 @@ fig_ticket_sales = px.bar(quant_sold_by_date,
                           title = "<b>Quantity Sold by Date<b>",
                           color_discrete_sequence=['#ec7c34'] * len(quant_sold_by_date),
                           template = "plotly_white")
-today = dt.date.today()
-fig_ticket_sales.update_layout(xaxis_range=[today - dt.timedelta(days=7), today])
-
-st.plotly_chart(fig_ticket_sales)
 
 st.markdown("---")
 
