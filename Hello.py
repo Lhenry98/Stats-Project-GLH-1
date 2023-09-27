@@ -6,7 +6,7 @@ st.write("# Welcome! 👋")
 
 st.markdown("##")
 
-def logged_in()
+def logged_in():
 name = st.text_input('Password')
 
 if name == st.secrets["password"]:
