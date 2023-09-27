@@ -47,7 +47,9 @@ st.dataframe(df_selection,
                  "ROI(%)": None,
                  "Margin": None,
                  "Shipping Cost": None,
-                 "Tax": None})
+                 "Tax": None
+             }, 
+            hide_index = True)
 
 st.markdown("---")
 
