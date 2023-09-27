@@ -77,7 +77,10 @@ fig_ticket_sales = px.bar(quant_sold_by_date,
                           title = "<b>Quantity Sold by Date<b>",
                           color_discrete_sequence=['#ec7c34'] * len(quant_sold_by_date),
                           template = "plotly_white")
-
+#change x-axis length
+fig_ticket_sales.update_xaxes(
+    dtick="M1",
+    tickformat="%b\n%Y")
 
 st.plotly_chart(fig_ticket_sales)
 
