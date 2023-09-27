@@ -10,7 +10,18 @@ if st.session_state['state'] != 1:
 st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
 
 #convert first columns to strings
-df = pd.read_csv('WonderBus Festival.csv', dtype={'Invoice #':str, 'Ex. Order No':str})
+df = pd.read_csv('WonderBus Festival.csv')
+del df[
+"Invoice #", 
+"Ex. Order No", 
+"Purchase Price/tix", 
+"Total Purchase Price", 
+"Profit Loss",
+"ROI(%)",
+"Margin",
+"Shipping Cost",
+"Tax"
+]
 
 # ---- SIDEBAR ----
 #event
@@ -64,15 +75,8 @@ st.download_button(
 #dataframe
 st.dataframe(df_selection,
              column_config = {
-                 "Purchase Price/tix": st.column_config.NumberColumn(format="$%d"), 
                  "Sell Price/tix": st.column_config.NumberColumn(format="$%d"), 
-                 "Total Purchase Price": st.column_config.NumberColumn(format="$%d"), 
-                 "Total Sell Price": st.column_config.NumberColumn(format="$%d"), 
-                 "Profit Loss": None,
-                 "ROI(%)": None,
-                 "Margin": None,
-                 "Shipping Cost": None,
-                 "Tax": None
+                 "Total Sell Price": st.column_config.NumberColumn(format="$%d")
              }, 
             hide_index = True)
 
