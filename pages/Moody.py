@@ -97,11 +97,12 @@ quant_sold_by_date = df_selection.groupby(by = ["Sale Date"]).sum()[["Sold Qty"]
 
 #bar chart
 fig_ticket_sales = px.bar(quant_sold_by_date,
-                          x = [0, 1000], 
+                          x = fig_ticket_sales.index, 
                           y = "Sold Qty",  
                           orientation = "v",
                           title = "<b>Quantity Sold by Date<b>",
                           color_discrete_sequence=['#ec7c34'] * len(quant_sold_by_date),
+                          range_x = [0, 1000], 
                           template = "plotly_white"
                          )
 
