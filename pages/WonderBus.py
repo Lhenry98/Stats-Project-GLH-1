@@ -47,8 +47,8 @@ csv = convert_df(df_selection)
 st.download_button(
     label="Download",
     data=csv,
-    file_name="Profit_Loss.xlsx",
-    mime="application/vnd.ms-excel"
+    file_name="Profit_Loss.csv",
+    mime="text/csv"
 )
 
 #dataframe
