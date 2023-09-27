@@ -39,6 +39,7 @@ df_selection = df.query("Customer == @customer & Venue == @venue & Event == @eve
 
 st.dataframe(df_selection,
              column_config = {
+                 "Invoice#": st.column_config.NumberColumn(format="%d"), 
                  "Purchase Price/tix": st.column_config.NumberColumn(format="$%d"), 
                  "Sell Price/tix": st.column_config.NumberColumn(format="$%d"), 
                  "Total Purchase Price": st.column_config.NumberColumn(format="$%d"), 
