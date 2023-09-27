@@ -39,7 +39,8 @@ if "All" in event:
     event = df["Event"].unique().tolist()
 
 df_selection = df.query("Customer == @customer & Venue == @venue & Event == @event")
-df_selection["Sale Date"] = df_selection["Sale Date"].str[:-8]
+df_selection["Sale Date"] = df_selection["Sale Date"].str[:-5]
+df_selection["Sale Date"] = df_selection["Sale Date"] + "00:00"
 quant_sold_by_date = df_selection.groupby(by = ["Sale Date"]).sum()[["Sold Qty"]].sort_values(by = "Sold Qty")
 
 # ---- MAIN PAGE ----
