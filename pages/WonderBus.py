@@ -1,8 +1,6 @@
-import time
 import pandas as pd
 import streamlit as st
 import plotly.express as px
-from datetime import datetime as dt
 
 st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
 
@@ -80,12 +78,6 @@ fig_ticket_sales = px.bar(quant_sold_by_date,
                           title = "<b>Quantity Sold by Date<b>",
                           color_discrete_sequence=['#ec7c34'] * len(quant_sold_by_date),
                           template = "plotly_white")
-
-now = dt.now()
-now_string = now.strftime("%d/%m/%Y %H:%M:%S")
-week = now - dt.timedelta(days = 7)
-week_string = week.strftime("%d/%m/%Y %H:%M:%S")
-fig_ticket_sales.update_xaxes(range=[week_string, now_string])
 
 st.plotly_chart(fig_ticket_sales)
 
