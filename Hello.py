@@ -6,14 +6,14 @@ st.write("# Welcome! 👋")
 
 st.markdown("##")
 
-name=st.text_input('your name', 'enter')
+name = st.text_input('Password')
 
-if name=='Sina':
-    st.session_state['state']=1
+if name == st.secrets["password"]:
+    st.session_state['state'] = 1
 else:
-    st.session_state['state']=2
+    st.session_state['state'] = 2
  
-if st.session_state['state']==1:
-    st.write('Hello Sina')
+if st.session_state['state'] == 1:
+    st.write('Success')
 else:
-    st.write("I don't recognize you")
+    st.write("Incorrect Password")
