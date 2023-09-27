@@ -104,7 +104,6 @@ fig_ticket_sales = px.bar(quant_sold_by_date,
                           color_discrete_sequence=['#ec7c34'] * len(quant_sold_by_date),
                           template = "plotly_white"
                          )
-fig_ticket_sales.update_traces(marker.line.width = 0)
 
 st.plotly_chart(fig_ticket_sales)
 
