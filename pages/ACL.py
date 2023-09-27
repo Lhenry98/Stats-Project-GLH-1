@@ -6,11 +6,12 @@ if st.session_state['state'] != 1:
     st.warning("You must log-in to see the content of this sensitive page! Head over to the log-in page.")
     st.stop()  # App won't run anything after this line
 
+event_name = "Austin City Limits"
 
 st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
 
 #convert first columns to strings
-df = pd.read_csv('WonderBus Festival.csv')
+df = pd.read_csv(event_name + '.csv')
 del df[
 "Invoice #", 
 "Ex. Order No", 
@@ -60,7 +61,7 @@ def convert_df(df):
 
 csv = convert_df(df_selection)
 
-st.title("WonderBus Festival")
+st.title(event_name)
 
 st.markdown("---")
 
