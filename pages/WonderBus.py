@@ -70,7 +70,7 @@ with right_column:
 st.markdown("##")
 
 #bar chart
-fig_ticket_sales = px.scatter(quant_sold_by_date,
+fig_ticket_sales = px.line(quant_sold_by_date,
                           x = quant_sold_by_date.index,
                           y = "Sold Qty", 
                           hover_data={"Sale Date": "|%B %d, %Y"}, 
