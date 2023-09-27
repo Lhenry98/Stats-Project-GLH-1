@@ -2,7 +2,7 @@ import time
 import pandas as pd
 import streamlit as st
 import plotly.express as px
-import datetime as dt
+from datetime import datetime as dt
 
 st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
 
@@ -86,6 +86,7 @@ now_string = now.strftime("%d/%m/%Y %H:%M:%S")
 week = now - dt.timedelta(days = 7)
 week_string = week.strftime("%d/%m/%Y %H:%M:%S")
 fig_ticket_sales.update_xaxes(range=[week_string, now_string])
+
 st.plotly_chart(fig_ticket_sales)
 
 st.markdown("---")
