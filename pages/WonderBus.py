@@ -36,6 +36,22 @@ if "All" in event:
 # ---- MAIN PAGE ----
 df_selection = df.query("Customer == @customer & Venue == @venue & Event == @event")
 
+#download button
+
+@st.cache
+def convert_df(df):
+    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return df.to_csv().encode('utf-8')
+
+csv = convert_df(my_large_df)
+
+st.download_button(
+    label="Download",
+    data=csv,
+    file_name="Profit_Loss.xlsx",
+    mime="application/vnd.ms-excel"
+)
+#dataframe
 st.dataframe(df_selection,
              column_config = {
                  "Purchase Price/tix": st.column_config.NumberColumn(format="$%d"), 
