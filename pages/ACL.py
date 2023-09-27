@@ -1,8 +1,6 @@
 import pandas as pd
 import streamlit as st
 import plotly.express as px
-import datetime as dt
-from datetime import date
 
 if st.session_state['state'] != 1:
     st.warning("You must log-in to see the content of this sensitive page! Head over to the log-in page.")
@@ -93,9 +91,6 @@ st.markdown("##")
 
 df_selection["Sale Date"] = df_selection["Sale Date"].str[:-5]
 df_selection["Sale Date"] = df_selection["Sale Date"] + "00:00"
-today = date.today()
-week_ago = today - dt.timedelta(days=7)
-df_selection[(df_selection['Sale Date'] > week_ago) & (df_selection['Sale Date'] < today)]
 quant_sold_by_date = df_selection.groupby(by = ["Sale Date"]).sum()[["Sold Qty"]].sort_values(by = "Sold Qty")
 
 #bar chart
