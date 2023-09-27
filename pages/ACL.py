@@ -6,7 +6,7 @@ if st.session_state['state'] != 1:
     st.warning("You must log-in to see the content of this sensitive page! Head over to the log-in page.")
     st.stop()  # App won't run anything after this line
 
-event_name = "Austin City Limits"
+event_name = "Moody"
 
 st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
 
@@ -15,10 +15,10 @@ df = pd.read_csv(event_name + '.csv')
 df = df.drop(["Invoice #", "Ex. Order No", "Purchase Price/tix", "Total Purchase Price", "Profit Loss" ,"ROI(%)" ,"Margin" ,"Shipping Cost" ,"Tax"], axis = 1)
 
 # ---- SIDEBAR ----
-#event
+#customer
 st.sidebar.header("Please Filter Here:")
 customer = st.sidebar.multiselect(
-    label = "Select the Customer:",
+    label = "Select the Customers:",
     options = ["All"] + df["Customer"].unique().tolist(),
     default = "All")
 if "All" in customer:
@@ -26,14 +26,15 @@ if "All" in customer:
 
 #venue
 venue = st.sidebar.multiselect(
-    label = "Select the Venue:",
+    label = "Select the Venues:",
     options = ["All"] + df["Venue"].unique().tolist(),
     default = "All")
 if "All" in venue:
     venue = df["Venue"].unique().tolist()
     
+#ticket type
 event = st.sidebar.multiselect(
-    label = "Select the Event Date:",
+    label = "Select the Ticket Names:",
     options = ["All"] + df["Event"].unique().tolist(),
     default = "All")
 if "All" in event:
