@@ -70,7 +70,7 @@ with right_column:
 st.markdown("##")
 
 #bar chart
-fig_ticket_sales = px.bar(quant_sold_by_date,
+fig_ticket_sales = px.scatter(quant_sold_by_date,
                           y = "Sold Qty", 
                           orientation = "v",
                           title = "<b>Quantity Sold by Date<b>",
