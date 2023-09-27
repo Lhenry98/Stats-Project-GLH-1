@@ -77,7 +77,6 @@ st.title(":bar_chart: Sales Dashboard")
 
 # top kpi's
 tot_sales = round(df_selection["Total Sell Price"].sum(), 2)
-average_roi = round(df_selection["ROI(%)"].mean(), 2)
 tot_quant_sold = df_selection["Sold Qty"].sum()
 
 #first two columns
