@@ -2,9 +2,10 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 
-if not logged_in():
+if st.session_state['state'] != 1:
     st.warning("You must log-in to see the content of this sensitive page! Head over to the log-in page.")
     st.stop()  # App won't run anything after this line
+
 
 st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
 
