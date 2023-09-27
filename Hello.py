@@ -8,12 +8,12 @@ st.markdown("##")
 
 name=st.text_input('your name', 'enter')
 
- if name=='Sina':
-     st.session_state['state']=1
- else:
-     st.session_state['state']=2
+if name=='Sina':
+    st.session_state['state']=1
+else:
+    st.session_state['state']=2
  
- if st.session_state['state']==1:
-     st.write('Hello Sina')
- else:
-     st.write("I don't recognize you")
+if st.session_state['state']==1:
+    st.write('Hello Sina')
+else:
+    st.write("I don't recognize you")
