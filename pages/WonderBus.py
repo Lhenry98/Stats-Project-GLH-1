@@ -2,6 +2,7 @@ import time
 import pandas as pd
 import streamlit as st
 import plotly.express as px
+import datetime
 
 st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
 
@@ -38,6 +39,7 @@ if "All" in event:
     event = df["Event"].unique().tolist()
 
 df_selection = df.query("Customer == @customer & Venue == @venue & Event == @event")
+quant_sold_by_date = df_selection.groupby(by = ["Sale Date"]).sum()[["Sold Qty"]].sort_values(by = "Sold Qty")
 
 
 # ---- MAIN PAGE ----
