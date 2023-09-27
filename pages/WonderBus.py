@@ -71,11 +71,16 @@ st.markdown("##")
 
 #bar chart
 fig_ticket_sales = px.scatter(quant_sold_by_date,
+                          x = quant_sold_by_date.index,
                           y = "Sold Qty", 
+                          hover_data={"Sale Date": "|%B %d, %Y"}, 
                           orientation = "v",
                           title = "<b>Quantity Sold by Date<b>",
                           color_discrete_sequence=['#ec7c34'] * len(quant_sold_by_date),
                           template = "plotly_white")
+fig_ticket_sales.update_xaxes(
+    dtick="M1",
+    tickformat="%b\n%Y")
 
 st.plotly_chart(fig_ticket_sales)
 
