@@ -44,6 +44,11 @@ def convert_df(df):
 
 csv = convert_df(df_selection)
 
+st.title("WonderBus Festival")
+
+st.markdown("---")
+
+#download button
 st.download_button(
     label="Download",
     data=csv,
