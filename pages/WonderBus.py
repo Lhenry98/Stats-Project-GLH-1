@@ -39,6 +39,7 @@ if "All" in event:
     event = df["Event"].unique().tolist()
 
 df_selection = df.query("Customer == @customer & Venue == @venue & Event == @event")
+df_selection["Sale Date"] = df_selection["Sale Date"].str[:-8]
 quant_sold_by_date = df_selection.groupby(by = ["Sale Date"]).sum()[["Sold Qty"]].sort_values(by = "Sold Qty")
 
 # ---- MAIN PAGE ----
@@ -77,8 +78,6 @@ fig_ticket_sales = px.bar(quant_sold_by_date,
                           title = "<b>Quantity Sold by Date<b>",
                           color_discrete_sequence=['#ec7c34'] * len(quant_sold_by_date),
                           template = "plotly_white")
-#change x-axis length
-fig_ticket_sales.update_xaxes(ticklen = 60)
 
 st.plotly_chart(fig_ticket_sales)
 
