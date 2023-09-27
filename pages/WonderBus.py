@@ -67,3 +67,5 @@ with right_column:
     st.subheader(f"{tot_quant_sold:,}")
 
 st.markdown("---")
+
+st.bar_chart(df_selection)
