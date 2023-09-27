@@ -36,10 +36,6 @@ if "All" in event:
 
 # ---- MAIN PAGE ----
 df_selection = df.query("Customer == @customer & Venue == @venue & Event == @event")
-df_selection["Sale Date"] = df_selection["Sale Date"].str[:-5]
-df_selection["Sale Date"] = df_selection["Sale Date"] + "00:00"
-df_selection = df_selection.style.format(thousands = "")
-quant_sold_by_date = df_selection.groupby(by = ["Sale Date"]).sum()[["Sold Qty"]].sort_values(by = "Sold Qty")
 
 st.dataframe(df_selection,
              column_config = {
@@ -68,6 +64,10 @@ with right_column:
     st.subheader(f"{tot_quant_sold:,}")
 
 st.markdown("##")
+
+df_selection["Sale Date"] = df_selection["Sale Date"].str[:-5]
+df_selection["Sale Date"] = df_selection["Sale Date"] + "00:00"
+quant_sold_by_date = df_selection.groupby(by = ["Sale Date"]).sum()[["Sold Qty"]].sort_values(by = "Sold Qty")
 
 #bar chart
 fig_ticket_sales = px.bar(quant_sold_by_date,
