@@ -53,7 +53,7 @@ st.dataframe(df_selection,
                  "Tax": None})
 
 st.title(":bar_chart: Sales Dashboard")
-st.markdown("##")
+st.markdown("---")
 
 # top kpi's
 tot_sales = round(df_selection["Total Sell Price"].sum(), 2)
@@ -81,6 +81,7 @@ fig_ticket_sales = px.bar(quant_sold_by_date,
                           template = "plotly_white")
 
 st.plotly_chart(fig_ticket_sales)
+st.slider(min_value = df_selection["Sale Date"].min(), max_value = df_selection["Sale Date"].max())
 
 st.markdown("---")
 
