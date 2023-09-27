@@ -52,8 +52,9 @@ st.dataframe(df_selection,
                  "Shipping Cost": None,
                  "Tax": None})
 
-st.title(":bar_chart: Sales Dashboard")
 st.markdown("---")
+
+st.title(":bar_chart: Sales Dashboard")
 
 # top kpi's
 tot_sales = round(df_selection["Total Sell Price"].sum(), 2)
