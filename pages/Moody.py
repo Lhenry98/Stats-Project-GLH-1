@@ -97,7 +97,7 @@ quant_sold_by_date = df_selection.groupby(by = ["Sale Date"]).sum()[["Sold Qty"]
 
 #bar chart
 fig_ticket_sales = px.bar(quant_sold_by_date,
-                          x = quant_sold_by_date.index, 
+                          x = [0, 1000], 
                           y = "Sold Qty",  
                           orientation = "v",
                           title = "<b>Quantity Sold by Date<b>",
