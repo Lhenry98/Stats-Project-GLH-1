@@ -101,7 +101,7 @@ fig_ticket_sales = px.bar(quant_sold_by_date,
                           y = "Sold Qty",  
                           orientation = "v",
                           title = "<b>Quantity Sold by Date<b>",
-                          color_discrete_sequence=['#ec7c34'] * len(quant_sold_by_date),
+                          color_discrete_sequence=['#ec7c34'],
                           template = "plotly_white"
                          )
 
