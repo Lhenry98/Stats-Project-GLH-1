@@ -6,9 +6,7 @@ st.write("# Welcome! 👋")
 
 st.markdown("##")
 
-admin = st.text_input('admin')
-moody= st.text_input('moody')
-zilker = st.text_input('zilker')
+name = st.text_input('password')
 
 #add for each login
 if name == st.secrets["admin"]:
