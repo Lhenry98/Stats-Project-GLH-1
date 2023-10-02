@@ -5,6 +5,9 @@ import plotly.express as px
 if st.session_state['state'] != 1:
     st.warning("You must log-in to see the content of this sensitive page! Head over to the log-in page.")
     st.stop()  # App won't run anything after this line
+except KeyError:
+    st.warning("You must log-in to see the content of this sensitive page! Head over to the log-in page.")
+    st.stop()  # App won't run anything after this line
 
 event_name = "Moody"
 
