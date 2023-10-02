@@ -24,7 +24,7 @@ if name == st.secrets["zilker"]:
 else:
     st.session_state['state'] = 0
 #------------------------------
-if st.session_state['state'] != 0:
+if st.session_state['state'] == 1:
     st.write('Success, you are free to browse!')
 else:
     st.write("Enter Password")
