@@ -6,17 +6,13 @@ st.write("# Welcome! 👋")
 
 st.markdown("##")
 
-name = st.text_input('password')
+name = st.text_input('Password')
 
 #st.session_state['state'] = 0
 
 #add for each login
 if name == st.secrets["admin"]:
     st.session_state['state'] = 1
-elif name == st.secrets["moody"]:
-    st.session_state['state'] = 2
-elif name == st.secrets["zilker"]:
-    st.session_state['state'] = 3
 else:
     st.session_state['state'] = 0
 #-------------------------------------
