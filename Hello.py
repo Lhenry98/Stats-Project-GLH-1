@@ -11,6 +11,8 @@ name = st.text_input('Password')
 #add for each login
 if name == st.secrets["soldout"]["soldout"]:
     st.session_state['state'] = 1
+if name == st.secrets["moody"]["moody"]:
+    st.session_state['state'] = 1
 else:
     st.session_state['state'] = 2
 #-------------------------------------
