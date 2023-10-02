@@ -6,8 +6,6 @@ st.write("# Welcome! 👋")
 
 st.markdown("##")
 
-st.session_state['state'] = 2
-
 name = st.text_input('Password')
 
 if name == st.secrets["password"]:
