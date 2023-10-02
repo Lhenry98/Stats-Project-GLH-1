@@ -8,19 +8,13 @@ st.markdown("##")
 
 name = st.text_input('Password')
 
-st.session_state['state'] = 4
-
 #add for each login
-if name == st.secrets["admin"]:
+if name == st.secrets["password"]:
     st.session_state['state'] = 1
-if name == st.secrets["moody"]:
-    st.session_state['state'] = 2
-if name == st.secrets["zilker"]:
-    st.session_state['state'] = 3
 else:
-    st.session_state['state'] = 4
+    st.session_state['state'] == 2
 #-------------------------------------
-if st.session_state['state'] != 4:
+if st.session_state['state'] == 1:
     st.write('Success, you are free to browse!')
 else:
     st.write("Enter Password")
