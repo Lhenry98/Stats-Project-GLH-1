@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 
-if st.session_state.key != 1:
+if st.session_state.key != 3:
     st.warning("You must log-in to see the content of this sensitive page! Head over to the log-in page.")
     st.stop()  # App won't run anything after this line
 
