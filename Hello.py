@@ -8,7 +8,7 @@ st.markdown("##")
 
 name = st.text_input('Password')
 
-#st.session_state['state'] = 0
+st.session_state['state'] = 0
 
 #add for each login
 if name == st.secrets["admin"]:
