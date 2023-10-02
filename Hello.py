@@ -14,16 +14,6 @@ if name == st.secrets["admin"]:
 else:
     st.session_state['state'] = 0
 #------------------------------
-if name == st.secrets["moody"]:
-    st.session_state['state'] = 2
-else:
-    st.session_state['state'] = 0
-#------------------------------
-if name == st.secrets["zilker"]:
-    st.session_state['state'] = 3
-else:
-    st.session_state['state'] = 0
-#------------------------------
 if st.session_state['state'] == 1:
     st.write('Success, you are free to browse!')
 else:
