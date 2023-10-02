@@ -9,7 +9,7 @@ st.markdown("##")
 name = st.text_input('Password')
 
 if 'key' not in st.session_state:
-    st.session_state.key = 'value'
+    st.session_state.key = 0
 
 if name == st.secrets["soldout"]["soldout"]:
     st.session_state.key = 1
