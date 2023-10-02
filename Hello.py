@@ -13,9 +13,9 @@ st.session_state['state'] = 0
 #add for each login
 if name == st.secrets["admin"]:
     st.session_state['state'] = 1
-else if name == st.secrets["moody"]:
+if name == st.secrets["moody"]:
     st.session_state['state'] = 2
-else if name == st.secrets["zilker"]:
+if name == st.secrets["zilker"]:
     st.session_state['state'] = 3
 else:
     st.session_state['state'] = 0
