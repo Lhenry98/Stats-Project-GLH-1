@@ -11,7 +11,7 @@ name = st.text_input('Password')
 #st.session_state['state'] = 0
 
 #add for each login
-if name == st.secrets["admin"]:
+if name == st.secrets["password"]:
     st.session_state['state'] = 1
 else:
     st.session_state['state'] = 0
