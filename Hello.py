@@ -15,12 +15,16 @@ if name == st.secrets["soldout"]["soldout"]:
     st.session_state.key = 1
 elif name == st.secrets["moody"]["moody"]:
     st.session_state.key = 2
-else:
+elif name == st.secrets["zilker"]["zilker"]:
     st.session_state.key = 3
+else:
+    st.session_state.key = 0
 #-------------------------------------
 if st.session_state.key == 1:
     st.write('Success, you are free to browse!')
 elif st.session_state.key == 2:
+    st.write('Success, you are free to browse!')
+elif st.session_state.key == 3:
     st.write('Success, you are free to browse!')
 else:
     st.write("Enter Password")
