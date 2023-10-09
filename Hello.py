@@ -27,4 +27,4 @@ elif st.session_state.key == 2:
 elif st.session_state.key == 3:
     st.write('Success, you are free to browse!')
 else:
-    st.write("Enter Password")
+    st.write("Input your password and press [ENTER]")
