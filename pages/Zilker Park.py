@@ -18,7 +18,7 @@ df = df.drop(["Invoice #", "Ex. Order No", "Purchase Price/tix", "Total Purchase
 #customer
 st.sidebar.header("Please Filter Here:")
 customer = st.sidebar.multiselect(
-    label = "Select the Customers:",
+    label = "Customers:",
     options = ["All"] + df["Customer"].unique().tolist(),
     default = "All")
 if "All" in customer:
@@ -26,7 +26,7 @@ if "All" in customer:
 
 #venue
 venue = st.sidebar.multiselect(
-    label = "Select the Venues:",
+    label = "Venues:",
     options = ["All"] + df["Venue"].unique().tolist(),
     default = "All")
 if "All" in venue:
@@ -34,7 +34,7 @@ if "All" in venue:
     
 #ticket type
 event = st.sidebar.multiselect(
-    label = "Select the Ticket Names:",
+    label = "Events:",
     options = ["All"] + df["Event"].unique().tolist(),
     default = "All")
 if "All" in event:
