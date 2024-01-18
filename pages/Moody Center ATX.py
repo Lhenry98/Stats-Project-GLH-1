@@ -3,12 +3,33 @@ import streamlit as st
 import plotly.express as px
 
 if st.session_state.key not in {1, 2}:
+    st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
+
+    hide_st_style = """
+                <style>
+                #MainMenu {visibility: hidden;}
+                footer {visibility: hidden;}
+                header {visibility: hidden;}
+                .css-1rs6os {visibility: hidden;}
+                .css-17ziqus {visibility: hidden;}
+                """
+    st.markdown(hide_st_style,unsafe_allow_html=True)
     st.warning("You must log-in to see the content of this sensitive page! Head over to the log-in page.")
     st.stop()  # App won't run anything after this line
 
 event_name = "Moody Center ATX"
 
 st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
+
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            .css-1rs6os {visibility: hidden;}
+            .css-17ziqus {visibility: hidden;}
+            """
+st.markdown(hide_st_style,unsafe_allow_html=True)
 
 #convert first columns to strings
 df = pd.read_csv(event_name + '.csv')
