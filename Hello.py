@@ -5,6 +5,7 @@ st.set_page_config(page_title="Welcome")
 hide_st_style = """
             <style>
             #MainMenu {visibility: hidden;}
+            #GithubIcon {visibility: hidden;}
             footer {visibility: hidden;}
             </style>
             """
