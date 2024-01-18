@@ -8,6 +8,8 @@ if st.session_state.key not in {1, 3}:
 
 event_name = "Zilker Park"
 
+st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
+
 hide_st_style = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -17,8 +19,6 @@ hide_st_style = """
             .css-17ziqus {visibility: hidden;}
             """
 st.markdown(hide_st_style,unsafe_allow_html=True)
-
-st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
 
 #convert first columns to strings
 df = pd.read_csv(event_name + '.csv')
