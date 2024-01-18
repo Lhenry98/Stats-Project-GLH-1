@@ -14,49 +14,49 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.keys import Keys
 
 #create Chrome instance
-service = Service(executable_path=r"C:\Users\LEEMU\Anaconda\envs\GianniProject\Chrome.exe")
+service = Service(executable_path = settings.driver_path)
 options = Options()
-#True means browser is invisible
-options.headless = True
+#True means browser is invisible (issues for some reason)
+options.headless = False
 options.add_argument("--no-sandbox")
 driver = webdriver.Chrome(options = options)
 driver.get("https://app.ticketutils.com/")
-delay = 180 #seconds
+delay = 600 #seconds
 
 #get username and password elements
-SiteUsername = driver.find_element_by_name('Email')
-SitePassword = driver.find_element_by_name('Password')
+SiteUsername = driver.find_element(By.NAME, 'Email')
+SitePassword = driver.find_element(By.NAME, 'Password')
 
 #submit login info
 SiteUsername.send_keys(settings.TU_username)
 SitePassword.send_keys(settings.TU_password)
 #click login button
-driver.find_element_by_xpath("/html/body/div[2]/div/div/form/div/div[3]/button").click()
+driver.find_element(By.XPATH, "/html/body/div[2]/div/div/form/div/div[3]/button").click()
 
 #click "Reports" button
 try:
     Reportsbutton = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, "POS_Reports")))
-    driver.find_element_by_id("POS_Reports").click()
+    driver.find_element(By.ID, "POS_Reports").click()
     print("Reports: Success!")
 except TimeoutException:
     print("Reports: Loading took too much time!")
 
 #click "Profit/Loss" button
-PLFrame = driver.find_element_by_css_selector("#WorkArea > div > div.Active > iframe")
+PLFrame = driver.find_element(By.CSS_SELECTOR, "#WorkArea > div > div.Active > iframe")
 try:
     PLbutton = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.CSS_SELECTOR, "#WorkArea > div > div.Active > iframe")))
     driver.switch_to.frame(PLFrame)
-    driver.find_element_by_xpath("/html/body/div[2]/div/div[1]/div/div[1]/div/div/div[2]/ul/li[3]/div/div[1]/a").click()
+    driver.find_element(By.XPATH, "/html/body/div[2]/div/div[1]/div/div[1]/div/div/div[2]/ul/li[3]/div/div[1]/a").click()
     print("P/L: Success!")
     driver.switch_to.default_content()
 except TimeoutException:
     print("P/L: Loading took too much time!")
 
 #load data table tab
-FilterFrame = driver.find_element_by_css_selector("#WorkArea > div > div.Active > iframe")
+FilterFrame = driver.find_element(By.CSS_SELECTOR, "#WorkArea > div > div.Active > iframe")
 try:
     #click next tab
-    driver.find_element_by_xpath("/html/body/div[2]/nav/div[2]/div[3]/span[3]").click()
+    driver.find_element(By.XPATH, "/html/body/div[2]/nav/div[2]/div[3]/span[3]").click()
 except TimeoutException:
     print("Data: Loading took too much time!")
 #wait for iframe to load in
@@ -70,18 +70,23 @@ while(True):
         CompName = i
         try:
             #click filter button
-            driver.find_element_by_xpath("/html/body/div[1]/div[1]/div[1]/ul/li[1]/a").click()
+            driver.find_element(By.XPATH, "/html/body/div[1]/div[1]/div[1]/ul/li[1]/a").click()
             #enter filter data
-            CustomerFilter = driver.find_element_by_name("Event.Value")
-            CustomerFilter.click()
+            CustomerFilter = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, "Venue_Value")))
+            driver.find_element(By.ID, "Venue_Value").click()
             CustomerFilter.send_keys(Keys.CONTROL, 'A')
             CustomerFilter.send_keys(Keys.BACKSPACE)
             CustomerFilter.send_keys(CompName)
+            #filter for past year
+            YearFilter = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, "EventDate_Value_Dropdown_ms")))
+            driver.find_element(By.ID, "EventDate_Value_Dropdown_ms").click()
+            driver.find_element(By.XPATH, "/html/body/div[1]/div[1]/div[2]/div[9]/div/div/ul/li[3]/label").click()
+            driver.find_element(By.ID, "EventDate.Value_Year").send_keys("2023")
             #need to click autocomplete for some reason
             time.sleep(1)
             #driver.find_element_by_xpath("/html/body/div[4]/ul/li").click()
             #click search when page is loaded
-            driver.find_element_by_id("Search").click()
+            driver.find_element(By.ID, "Search").click()
             print("Filter: Success!")
         except TimeoutException:
             print("Filter: Loading took too much time!")
@@ -89,8 +94,8 @@ while(True):
         #download excel sheet
         try:
             ListData = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '//*[@id="load_List"][contains(@style, "display: none;")]')))
-            driver.find_element_by_id("MoreActions").click()
-            driver.find_element_by_xpath("/html/body/div[4]/ul/li[2]").click()
+            driver.find_element(By.ID, "MoreActions").click()
+            driver.find_element(By.XPATH, "/html/body/div[4]/ul/li[2]").click()
             print("Export: Success!")
         except TimeoutException:
             print("Export: Loading took too long!")
@@ -99,7 +104,7 @@ while(True):
         while os.path.isfile(settings.download_location + "Profit_Loss.xlsx") == False:
             time.sleep(1)
         if os.path.isfile(settings.download_location + "Profit_Loss.xlsx"):
-            shutil.move(settings.download_location + "Profit_Loss.xlsx", "C:/Users/LEEMU/Anaconda/envs/GianniProject/App/" + CompName + ".xlsx")
+            shutil.move(settings.download_location + "Profit_Loss.xlsx", settings.app_path + CompName + ".xlsx")
         else:
             print("File couldn't be found!")
         
@@ -135,5 +140,5 @@ while(True):
             print(git_file + ' CREATED')
         
 #wait 5 minutes then run again
-    time.sleep(300)
 #driver.close()
+    time.sleep(300)
