@@ -8,6 +8,19 @@ if st.session_state.key not in {1, 3}:
 
 event_name = "Zilker Park"
 
+st.markdown(
+    """
+    <style>
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
+    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
+    .viewerBadge_text__1JaDK {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 st.set_page_config(page_title= "Profit/Loss Report", layout= "wide")
 
 #convert first columns to strings
