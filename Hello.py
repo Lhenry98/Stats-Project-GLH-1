@@ -27,6 +27,8 @@ elif name == st.secrets["moody"]["moody"]:
     st.session_state.key = 2
 elif name == st.secrets["zilker"]["zilker"]:
     st.session_state.key = 3
+elif name == st.secrets["cfg"]["cfg"]:
+    st.session_state.key = 4
 else:
     st.session_state.key = 0
 #-------------------------------------
@@ -35,6 +37,8 @@ if st.session_state.key == 1:
 elif st.session_state.key == 2:
     st.write('Success, you are free to browse!')
 elif st.session_state.key == 3:
+    st.write('Success, you are free to browse!')
+elif st.session_state.key == 4:
     st.write('Success, you are free to browse!')
 else:
     st.write("Input your password and press [ENTER]")
